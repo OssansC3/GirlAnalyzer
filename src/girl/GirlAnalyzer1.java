@@ -66,7 +66,7 @@ public class GirlAnalyzer1 {
 			String csv[] = value.toString().split(",");
 
 			// 若い女性のみ受付
-			if (!isEqual(csv[PosUtils.BUYER_AGE],2)||(!isEqual(csv[PosUtils.BUYER_SEX],2))) {
+			if (!isEqual(csv[PosUtils.BUYER_AGE],1,2)||(!isEqual(csv[PosUtils.BUYER_SEX],2))) {
 				return;
 			}
 
@@ -77,7 +77,7 @@ public class GirlAnalyzer1 {
 			Long count = Long.parseLong(csv[PosUtils.ITEM_TOTAL_PRICE]);
 
 			// keyを取得
-			String name = csv[PosUtils.ITEM_CATEGORY_NAME];
+			String name = csv[PosUtils.ITEM_NAME];
 
 			// emitする （emitデータはCSKVオブジェクトに変換すること）
 			context.write(new Text(name), new Text(String.valueOf(count)));
